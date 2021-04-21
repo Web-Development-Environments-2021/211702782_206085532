@@ -3,6 +3,7 @@
 	<head>
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
+		<link rel="stylesheet" type="text/css" href="content.css" />
 	</head>
 
 	<body>
@@ -14,8 +15,26 @@
 			<label for="lblTime">TIME:</label>
 			<input id="lblTime" type="text" />
 		</div>
-		<div id="game">
-			<canvas id="canvas" height="600" width="600"></canvas>
-		</div>
+
+		<div id="content">
+			<!-- <div id="welcome"> 
+				<canvas id="canvas" height="600" width="600"></canvas>
+			</div> -->
+			<div id="game"> 
+				<canvas id="gameCanvas" height="600" width="600"></canvas>
+			</div>
+			<div id="registration"> 
+				<canvas id="registrationCanvas" height="600" width="600"></canvas>
+			</div>
+			<div id="login"> 
+				<canvas id="loginCanvas" height="600" width="600"></canvas>
+			</div>
+			<div id="settings"> 
+				<canvas id="settingsCanvas" height="600" width="600"></canvas>
+			</div>
+			<div id="about"> 
+				<canvas id="aboutCanvas" height="600" width="600"></canvas>
+			</div>
+		</div>		
 	</body>
 </html>
