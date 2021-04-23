@@ -2,15 +2,7 @@
 /* #game {
     display: none;
 }*/ 
-#registration {
+img {
     display: none;
 }
-#login {
-    display: none;
-}
-#settings {
-    display: none;
-}
-#about {
-    display: none;
-}
+

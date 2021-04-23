@@ -15,26 +15,42 @@
 			<label for="lblTime">TIME:</label>
 			<input id="lblTime" type="text" />
 		</div>
+		<div id="lives">
+			<label for="lblLives">LIVES:</label>
+			<input id="lblLives" type="text" />
+		</div>
 
 		<div id="content">
 			<!-- <div id="welcome"> 
 				<canvas id="canvas" height="600" width="600"></canvas>
 			</div> -->
-			<div id="game"> 
-				<canvas id="gameCanvas" height="600" width="600"></canvas>
+			<div id="game">
+				<img id="b1.png" width = "30" height= "30" src="b1.png" >
+				
+				<img id="p1.png" width = "30" height= "30" src="p1.png" >
+				<img id="p2.png" width = "30" height= "30" src="p2.png" >
+				<img id="p3.png" width = "30" height= "30" src="p3.png" >
+				<img id="p4.png" width = "30" height= "30" src="p4.png" >
+
+				<img id="c1.png" width = "30" height= "30" src="c1.png" >
+				<img id="c2.png" width = "30" height= "30" src="c2.png" >
+				<img id="c3.png" width = "30" height= "30" src="c3.png" >
+
+				<img id="md.png" width = "30" height= "30" src="md.png" >
+				<img id="clock.png" width = "30" height= "30" src="clock.png" >
+				<img id="candy.png" width = "30" height= "30" src="candy.png" >
+				<img id="rip.png" width = "30" height= "30" src="rip.png" >				
+
+				<canvas id="gameCanvas" height="600" width="600"></canvas>				
+				</audio>
 			</div>
-			<div id="registration"> 
-				<canvas id="registrationCanvas" height="600" width="600"></canvas>
-			</div>
-			<div id="login"> 
-				<canvas id="loginCanvas" height="600" width="600"></canvas>
-			</div>
-			<div id="settings"> 
-				<canvas id="settingsCanvas" height="600" width="600"></canvas>
-			</div>
-			<div id="about"> 
-				<canvas id="aboutCanvas" height="600" width="600"></canvas>
-			</div>
+			<div id="sound">
+				<audio id="pacman.mpeg"
+					autoplay = "false"
+					controls
+					loop
+					src="pacman.mpeg">
+			</div>			
 		</div>		
 	</body>
 </html>
