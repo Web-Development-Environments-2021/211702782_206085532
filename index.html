@@ -7,10 +7,11 @@
 		<link rel="stylesheet" type="text/css" href="css/layout.css"/>
 		<link rel="stylesheet" type="text/css" href="css/pages.css"/>
 		<link rel="stylesheet" type="text/css" href="content.css" />
+		<link rel="shortcut icon" type="image/png" href="resources/3dBlueGhost.png">
+
 	</head>
 
 	<body>
-		
 		
 		<div id="menu" class="menu">
 			<header>
@@ -188,21 +189,18 @@
 					<img id="clock.png" class = "hidden" width = "30" height= "30" src="clock.png" >
 					<img id="candy.png" class = "hidden" width = "30" height= "30" src="c1.png" >
 					<img id="rip.png" class = "hidden" width = "30" height= "30" src="rip.png" >
-					
-					<img id="loser.png" class = "hidden" width = "30" height= "30" src="loser.png" >
-					
-					<img id="mute.png" class = "hidden" width = "30" height= "30" src="mute.png" >	
-					<img id="unmute.png" class = "hidden" width = "30" height= "30" src="unmute.png" >	
-	
+											
 					<canvas id="gameCanvas" height="600" width="600"></canvas>				
-					</audio>
+				</div>
+				<div>
+					<button id="playBTN" onclick="playMusic()">Pause music &#9208;</button>
+					<button id="playAgain" onclick="restartGame()">play again</button>
+					<button id="returnToSettings" onclick="navigateToSettings()">back to settings</button>
 				</div>
 				<div id="sound">
 					<audio id="backgroundAudio"
 						loop
-						src="pacman.mpeg"></audio>
-					<button id="playBTN" onclick="playMusic()">Pause music &#9208;</button>
-					
+						src="pacman.mpeg"></audio>					
 				</div>
 				<div id="soundFail">
 					<audio id="gameOverAudio"
