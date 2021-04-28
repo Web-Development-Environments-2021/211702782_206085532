@@ -18,7 +18,7 @@ let interval;
 let gameTime;
 // sound
 let sound;
-let soundPlaying = 0;
+let soundPlaying = 1;
 let soundFail;
 // colors
 let color5Points;
