@@ -1,6 +1,6 @@
 # Assignment2
 The link to our web page: 
-https://web-development-environments-2021.github.io/211702782_206085532/
+https://web-development-environments-2021.github.io/Assignment2_211702782_206085532/
 The special effects that we implemented are:
 1. A special kind of monster that takes twice the lives and twice the points 
 of a regular monster
