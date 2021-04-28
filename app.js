@@ -93,7 +93,7 @@ function Start() {
 	lives = 5;
 	pac_color = "yellow";
 	let cnt = 400;
-	let food_remain = foodAmount;
+	let food_remain = 50;
 	let pacman_remain = 1;
 	start_time = new Date();
 	defaultDir = 4;
@@ -105,8 +105,8 @@ function Start() {
 	clock = new Object();
 	candy = new Object();
 	monsters = [m1, m2, m3, m4];		
-	let food1_remain = Math.floor(foodAmount*0.6);
-	let food2_remain = Math.floor(foodAmount*0.3);
+	let food1_remain = Math.floor(50*0.6);
+	let food2_remain = Math.floor(50*0.3);
 	let food3_remain = food_remain - (food1_remain + food2_remain);
 	food = [food1_remain, food2_remain, food3_remain];
 	
@@ -153,7 +153,7 @@ function Start() {
 }
 
 function initGameBoard(food_remain, food, pacman_remain, cnt){
-	monsters_remain = numOfMonsters;
+	monsters_remain = 4;
 	board = initBoardWalls(board);	
 	for (var i = 0; i < 20; i++) {
 		
@@ -169,14 +169,13 @@ function initGameBoard(food_remain, food, pacman_remain, cnt){
 				board[i][j] = 12;
 			}			
 			//randomly choose monsters for the edges
-			if(monsters_remain > 0){
+			monsters_remain -= drawMonsters(i, j, board, monsters[4-monsters_remain]);
+										
 
-				monsters_remain -= drawMonsters(i, j, board, monsters[monsters_remain-1]);
-			}										
 			if(board[i][j] != 5 && board[i][j] != 12 && (board[i][j] < 6 || board[i][j] > 9)) {				
 				var randomNum = Math.random();
 				if (randomNum <= (1.0 * food_remain) / cnt) { //draw food
-					while(food[Math.floor(randomNum*10)%3] <= 0){ 
+					while(food[Math.floor(randomNum*10)%3] <= 0 && food_remain>0){ 
 						randomNum = Math.random();
 					}							
 					food_remain--;
@@ -384,12 +383,12 @@ function updateScore(mId){
 	if(mId==9){
 		let lives_left = "pacman"+ lives.toString();
 		let life = document.getElementById(lives_left);
-		life.style.display = "none";
+		life.style.visibility = "hidden";
 		lives -=1
 		if(lives>0){
 			lives_left = "pacman"+ lives.toString();
 			life = document.getElementById(lives_left);
-			life.style.display = "none";
+			life.style.visibility = "hidden";
 			lives -=1
 			score -= 20;
 		}
@@ -397,7 +396,7 @@ function updateScore(mId){
 	else{
 		let lives_left = "pacman"+ lives.toString();
 		let life = document.getElementById(lives_left);
-		life.style.display = "none";
+		life.style.visibility = "hidden";
 		score -= 10;
 		lives -=1;
 	}			
@@ -409,9 +408,12 @@ function updateScore(mId){
 		soundFail.play();
 		soundPlaying = 0;	
 		score <=0 ? score = 0 : lives = 0;					
-		clearKeysDown();			
+		clearKeysDown();
+		window.clearInterval(interval);	
+
 		setTimeout(slowDeath, 100);
-		window.clearInterval(interval);		
+		setTimeout(restartGame, 2000);						
+		
 	}	
 	else{
 		caught(board);
@@ -469,7 +471,6 @@ function updateMonsterPosition(m){
 		candy.i = -1;
 		candy.j = -1;
 		pac_color = "#00C9A7";
-		return;
 	}	
 	board[m.i][m.j] = m.id;
 	
@@ -480,35 +481,35 @@ function updateMonsterPosition(m){
 */
 function caught(board){
 	alert("you're not carefull");
-			shape.i = 0;
-			shape.j = 0;
-			let emptyCell = findRandomEmptyCell(board);
-			shape.i = emptyCell[0];
-			shape.j = emptyCell[1];
-			for(let a=0; a < numOfMonsters; a++){
-				switch(monsters[a].id){
-					case 6:
-						board[monsters[a].i][monsters[a].j] = 0;
-						monsters[a].i = 0;
-						monsters[a].j = 0;
-						break;
-					case 7:
-						board[monsters[a].i][monsters[a].j] = 0;
-						monsters[a].i = 0;
-						monsters[a].j = 19;
-						break;
-					case 8:
-						board[monsters[a].i][monsters[a].j] = 0;
-						monsters[a].i = 19;
-						monsters[a].j = 0;
-						break;
-					case 9:
-						board[monsters[a].i][monsters[a].j] = 0;
-						monsters[a].i = 19;
-						monsters[a].j = 19;
-						break;
-				}
-			}
+	shape.i = 0;
+	shape.j = 0;
+	let emptyCell = findRandomEmptyCell(board);
+	shape.i = emptyCell[0];
+	shape.j = emptyCell[1];
+	for(let a=0; a < numOfMonsters; a++){
+		switch(monsters[a].id){
+			case 6:
+				board[monsters[a].i][monsters[a].j] = 0;
+				monsters[a].i = 0;
+				monsters[a].j = 0;
+				break;
+			case 7:
+				board[monsters[a].i][monsters[a].j] = 0;
+				monsters[a].i = 0;
+				monsters[a].j = 19;
+				break;
+			case 8:
+				board[monsters[a].i][monsters[a].j] = 0;
+				monsters[a].i = 19;
+				monsters[a].j = 0;
+				break;
+			case 9:
+				board[monsters[a].i][monsters[a].j] = 0;
+				monsters[a].i = 19;
+				monsters[a].j = 19;
+				break;
+		}
+	}
 }
 
 function chooseMonsterDirection(m){
@@ -516,7 +517,7 @@ function chooseMonsterDirection(m){
 
 	//change direction if meet end of board, wall or other monster
 	if(rnd<5){
-		while( ((m.direction == 1 && (m.j == 0 || board[m.i][m.j - 1] == 5 || board[m.i][m.j - 1] >= 6))
+			while( ((m.direction == 1 && (m.j == 0 || board[m.i][m.j - 1] == 5 || board[m.i][m.j - 1] >= 6))
 		|| (m.direction == 2 && (m.j == 19 || board[m.i][m.j + 1] == 5 || board[m.i][m.j + 1] >= 6))
 		|| (m.direction == 3 && (m.i == 0 || board[m.i-1][m.j] == 5 || board[m.i-1][m.j] >= 6))
 		|| (m.direction == 4 && (m.i == 19 || board[m.i+1][m.j] == 5 || board[m.i+1][m.j] >= 6))))
@@ -568,29 +569,26 @@ function chooseMonsterDirection(m){
 }
 
 function restartGame(){
-	window.clearInterval(interval);
-	let life = document.getElementById("pacman1");
-	life.style.display = "inline";
-	life = document.getElementById("pacman2");
-	life.style.display = "inline";
-	life = document.getElementById("pacman3");
-	life.style.display = "inline";
-	life = document.getElementById("pacman4");
-	life.style.display = "inline";
-	life = document.getElementById("pacman5");
-	life.style.display = "inline";
-	Start();
-}
-
-function navigateToSettings(){
-	if(soundPlaying == 1){
-		soundPlaying = 0;
-		sound.pause();
+	if(confirm("want to play again?")){
+		//domInteraction = 1;
 		soundFail.pause();
+		let life = document.getElementById("pacman1");
+		life.style.visibility = "visible";
+		life = document.getElementById("pacman2");
+		life.style.visibility = "visible";
+		life = document.getElementById("pacman3");
+		life.style.visibility = "visible";
+		life = document.getElementById("pacman4");
+		life.style.visibility = "visible";
+		life = document.getElementById("pacman5");
+		life.style.visibility = "visible";
+		Start();
 	}
-	window.clearInterval(interval);
-	$("#GameLayout").addClass("hidden");
-	$("#Settings").removeClass("hidden");
+	else{
+		soundFail.pause();
+		
+		//navigate back to setting 
+	}
 }
 
 
@@ -598,7 +596,7 @@ function UpdatePosition() {
 	speedCounter += 1
 
 	if (speedCounter % 2 ==1){
-		for(let i =0; i < numOfMonsters; i++){
+		for(let i =0; i < 4; i++){
 			updateMonsterPosition(monsters[i]);
 		}
 		if(candy.i != -1){
@@ -640,10 +638,7 @@ function UpdatePosition() {
 			case 10:
 				if(lives<5){
 					lives += 1;
-					let lives_left = "pacman"+ lives.toString();		
-					let life = document.getElementById(lives_left);
-					life.style.display = "inline";
-				}								
+				}
 				medicine.count--;
 				medicine.start_show = Infinity;
 				break;
@@ -672,8 +667,7 @@ function UpdatePosition() {
 			window.alert("You are better than " + score + "points!");
 		}
 		clearKeysDown();
-		sound.pause();	
-		soundPlaying = 0;	
+		restartGame();
 	} else {	
 		updatePositionOfSpecialObjects(medicine, currentTime, 1);
 		updatePositionOfSpecialObjects(clock, currentTime, 3);
@@ -703,9 +697,7 @@ function updatePositionOfSpecialObjects(o, currentTime, delay){
 	else if((currentTime - o.start_show)/1000 >= 5){
 		board[o.i][o.j] = 0;
 		o.start_show = Infinity;
-		if(o.count == 1){
-			o.count--;
-		}
+		o.count--;
 	}
 
 }
@@ -785,8 +777,12 @@ function initBoardWalls(){
 	];
 }
 
-function slowDeath(){	
-	let img = document.getElementById('rip.png');
-	context.drawImage(img, 50 , 50, 524, 524);	
-	setTimeout(function(){soundFail.pause()}, 3000);	
+function slowDeath(){
+	let center = new Object();
+	center.x = shape.i * 30 + 15;
+	center.y = shape.j * 30 + 15;
+	img = document.getElementById('rip.png');
+	board[shape.i][shape.j] = context.drawImage(img, 50 , 50, 524, 524);
+	img = document.getElementById('loser.png');
+	board[shape.i][shape.j] = context.drawImage(img, 350 , 0, 200, 200);
 }
