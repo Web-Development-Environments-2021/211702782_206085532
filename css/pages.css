@@ -1,0 +1,399 @@
+:root {
+
+    --baseDark: #4B4453;
+    --baseLight: #B0A8B9;
+    --backgroundDeep: #462784;
+    --backgroundDark: rgba(132, 94, 194, 0.9); /* #845EC2 */
+    --backgroundLight: #C197FF;
+    --contentDark: #005B44;
+    --contentLight: #00C9A7;
+    --contentBrightLight: #4FFBDF;
+    --contentWhitest: #C4FCEF;
+    --error: #FF8066;
+}
+
+/* welcome page */
+
+.welcome {
+
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome img {
+
+    width: 30%;
+}
+
+.welcome .buttons {
+
+    display: flex;
+    margin-top: 2em;
+}
+
+.welcome button + button {
+
+    margin-left: 2em;
+}
+
+.welcome button {
+
+    padding: 0.25rem 2.5rem;
+    font-size: 1.125rem;
+    color: var(--contentLight);
+    background: var(--backgroundDark);
+    border: 2px solid var(--backgroundDeep);
+    border-radius: 0.625em;
+    box-shadow: 0 0 0.625em 0 rgba(0, 0, 0, 0.3);
+    outline: none;
+
+}
+
+.welcome button:hover {
+
+    font-weight: bold;
+    color: var(--contentDark);
+}
+
+/* registration and login page */
+
+.registration, .login {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registration h1, .login h1 {
+
+    margin-bottom: 0.75em;
+    color: var(--contentLight);
+    font-size: 3rem;
+    font-weight: bold;
+    position: relative;
+}
+
+.registration h1::after, .login h1::after {
+
+    content: '';
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 150%;
+    transform: translateX(-16.666%);
+    bottom: -0.1em;
+    background: var(--contentLight);
+}
+
+.registration form, .login form {
+
+    background: var(--backgroundDark);
+    padding: 1.5rem;
+    border-radius: 3rem / 5rem;
+    box-shadow: 0 0 0.625em 0 rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--backgroundDeep)
+}
+
+.registration label, .login label {
+
+    color: var(--contentBrightLight);
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.registration form div, .login form div {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+.registration span {
+
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+.registration input, .login input {
+    width: 97%;
+    font-weight: bold;
+    color: var(--contentDark);
+}
+
+.registration .requiredTag {
+
+    display: inline-block;
+    color: var(--error);
+    font-size: 1.5rem;
+    line-height: 100%;
+    vertical-align: middle;
+}
+
+.registration input:focus, .login input:focus {
+
+    outline: none;
+    border: 2px solid var(--backgroundDeep);
+}
+
+.registration .buttons, .login .buttons {
+
+    display: flex;
+    flex-direction: row;
+    place-content: center;
+}
+
+.registration button, .login button {
+
+    padding: 0.25rem 2.5rem;
+    font-size: 1.5rem;
+    color: var(--contentLight);
+    background-color: var(--backgroundDeep);
+    border-radius: 0.625rem;
+    outline: none;
+}
+
+.registration button:focus, .login button:focus {
+
+    color: var(--contentDark);
+}
+
+.registration button + button {
+
+    margin-left: 1rem;
+}
+
+.registration label.error, .login :is(label.error, .generalError) {
+
+    color: var(--error);
+    font-size: 1rem;
+}
+
+/* About Modal */
+
+.aboutOverlay {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 19;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.about {
+
+    padding: 2rem;
+    background: var(--backgroundDark);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    border: 7px  solid var(--backgroundDeep);
+    border-radius: 3rem / 5rem;
+}
+
+.aboutCloseIcon {
+    
+    color: var(--contentBrightLight);
+    display: block;
+    position: absolute;
+    background-color: var(--backgroundLight);
+    border-radius: 50%;
+    border: 1px solid var(--backgroundDeep);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.3);
+    top: calc(7px + 2rem);
+    left: calc(7px + 2rem);
+    width: 2em;
+    height: 2em;
+    padding: 0.3em;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.about h1 {
+
+    margin-bottom: 0.75em;
+    color: var(--contentBrightLight);
+    font-size: 3rem;
+    font-weight: bold;
+    position: relative;
+    width: fit-content;
+    text-align: center;
+    align-self: center;
+}
+
+.about h1::after {
+
+    content: '';
+    display: block;
+    position: absolute;
+    height: 3px;
+    left: 0;
+    width: 110%;
+    transform: translateX(-4.545%); /* d=0.5*0.1*x = 0.5*0.1*(11/10)*w = 0.4545w */
+    bottom: -0.1em;
+    background: var(--contentBrightLight);
+}
+
+.about h2 {
+
+    color: var(--contentBrightLight);
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin-bottom: 0.2em;
+}
+
+.about h2:not(:first-of-type) {
+
+    margin-top: 0.7em;
+}
+
+.about :is(p, li) {
+
+    color: var(--contentWhitest);
+    font-size: 1.2rem;
+    line-height: 1.4em;
+}
+
+.about h2:last-of-type ~ p {
+
+    margin-bottom: 0.2em;
+}
+
+@keyframes aboutFadeIn {
+    
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes aboutFadeOut {
+    
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+/* Settings page */
+
+.settings {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.settings h1 {
+
+    margin-bottom: 0.75em;
+    color: var(--contentLight);
+    font-size: 3rem;
+    font-weight: bold;
+    position: relative;
+}
+
+.settings h1::after {
+
+    content: '';
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 150%;
+    transform: translateX(-16.666%);
+    bottom: -0.1em;
+    background: var(--contentLight);
+}
+
+.settings form {
+
+    background: var(--backgroundDark);
+    padding: 1.5rem;
+    border-radius: 3rem / 5rem;
+    box-shadow: 0 0 0.625em 0 rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--backgroundDeep)
+}
+
+.settings :is(h2, #dotAmountLabel, #durationLabel, #ghostAmountLabel) {
+
+    color: var(--contentBrightLight);
+    font-size: 1.7rem;
+    margin-bottom: 0.25em;
+    font-weight: normal;
+}
+
+.settings :is(h2, #dotAmountLabel, #durationLabel, #ghostAmountLabel):not(:first) {
+
+    margin-top: 2rem;
+}
+
+.settings label:not(#dotAmountLabel, #durationLabel, #ghostAmountLabel) {
+
+    color: var(--contentWhitest);
+    font-size: 1.2rem;
+}
+
+.settings form div {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+.settings span {
+
+    opacity: 0.9;
+    font-size: 1rem;
+    margin-left: 0.35rem;
+}
+
+.settings input {
+    margin: 0 0.5rem;
+    font-weight: bold;
+    color: var(--contentDark);
+}
+
+.settings output{
+
+    color: var(--contentWhitest);
+    font-size: 1rem;
+}
+
+.settings input:focus {
+
+    outline: none;
+    border: 2px solid var(--backgroundDeep);
+}
+
+.settings .buttons {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.settings button {
+
+    padding: 0.25rem 2.5rem;
+    font-size: 1.5rem;
+    color: var(--contentLight);
+    background-color: var(--backgroundDeep);
+    border-radius: 0.625rem;
+    outline: none;
+    max-width: fit-content;
+}
+
+.settings button:focus {
+
+    color: var(--contentDark);
+}
+
+.settings button + button {
+
+    margin-top: 1rem;
+}
+
+/* hidden panels (last for speceficity)*/
+
+.hidden {
+    display: none;
+}
