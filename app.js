@@ -2,33 +2,49 @@ let context;
 let shape = new Object();
 let board;
 let score;
-let pac_color;
-let start_time;
-let time_elapsed;
-let interval;
+let domInteraction = 0;
+let speedCounter = 0;
 let defaultDir;
 let monsters;
 let lives;
 let medicine;
 let clock;
 let candy;
+let numOfMonsters;
+// time
+let start_time;
+let time_elapsed;
+let interval;
+let gameTime;
+// sound
 let sound;
-let soundPlaying = 1;
+let soundPlaying = 0;
 let soundFail;
-let domInteraction = 0;
-let speedCounter = 0;
-let colors = ["green", "blue", "black"]
-let gameTime = 60;
-let numOfMonsters = 4;
+// colors
+let color5Points;
+let color15Points;
+let color25Points;
+let pac_color;
+// food
 let foodOnBoard = 50; //updating number of food on the board
-let foodAmount = 50;
+let foodAmount;
 let food; //list of food kinds left
+// controls
+let keyUp;
+let keysDown;
+let keyLeft;
+let keyRight;
 
 $(document).ready(function() {
 	context = gameCanvas.getContext("2d");
-	soundFail = document.getElementById('fail.mpeg'); 
-	sound = document.getElementById('pacman.mpeg'); 
-	Start();
+	
+	// game start listener
+	$("#gameStarter").change( (e) => {
+		
+		soundFail = document.getElementById('gameOverAudio'); 
+		sound = document.getElementById('backgroundAudio'); 
+		Start();
+	})
 });
 
 /**
@@ -37,14 +53,12 @@ $(document).ready(function() {
 function playMusic(){
 	playBTN = document.getElementById('playBTN'); 
 	if(soundPlaying==0){
-		if(domInteraction == 0){
-			alert("enabling sound");
-			domInteraction = 1;
-		}		
-		if(soundPlaying!=1){
-			sound.play();
-			soundPlaying = 1;
-		}
+		// if(domInteraction == 0){
+		// 	alert("enabling sound");
+		// 	domInteraction = 1;
+		// }		
+		sound.play();
+		soundPlaying = 1;
 		playBTN.innerHTML = "Pause music &#9208;";
 	}
 	else if(soundPlaying==1){
@@ -96,7 +110,7 @@ function Start() {
 	let food3_remain = food_remain - (food1_remain + food2_remain);
 	food = [food1_remain, food2_remain, food3_remain];
 	
-	if(domInteraction && soundPlaying == 0){
+	if(soundPlaying == 0){
 		sound.play();
 		soundPlaying = 1;
 	}	
@@ -107,14 +121,31 @@ function Start() {
 	addEventListener(
 		"keydown",
 		function(e) {
-			keysDown[e.keyCode] = true;
+			let key;
+			if (e.code in specialKeyboardKeys){
+				key = e.code;
+			}
+			else {
+				key = e.key;
+			}
+
+			keysDown[key] = true;
 		},
 		false
 	);
-	addEventListener(
+	addEventListener(           
 		"keyup",
 		function(e) {
-			keysDown[e.keyCode] = false;
+
+			let key;
+			if (e.code in specialKeyboardKeys){
+				key = e.code;
+			}
+			else {
+				key = e.key;
+			}
+
+			keysDown[key] = false;
 		},
 		false
 	);
@@ -248,16 +279,16 @@ function findRandomEmptyCell(board) {
  * @returns appropriate enumeations for each command
  */
 function GetKeyPressed() {
-	if (keysDown[38]) {
+	if (keysDown[keyUp]) {
 		return 1;
 	}
-	if (keysDown[40]) {
+	if (keysDown[keyDown]) {
 		return 2;
 	}
-	if (keysDown[37]) {
+	if (keysDown[keyLeft]) {
 		return 3;
 	}
-	if (keysDown[39]) {
+	if (keysDown[keyRight]) {
 		return 4;
 	}
 }
@@ -288,21 +319,21 @@ function Draw(direction) {
 
 				context.beginPath();
 				context.arc(center.x, center.y, 10, 0*Math.PI, 2*Math.PI); // because each cell on canvas is 30X30px
-				context.fillStyle = "green"; //color
+				context.fillStyle = color5Points; //color
 				context.fill();
 
 			} else if (board[i][j] == 2) { //food2
 
 				context.beginPath();
 				context.arc(center.x, center.y, 10, 0*Math.PI, 2*Math.PI); 
-				context.fillStyle = "black"; //color
+				context.fillStyle = color15Points; //color
 				context.fill();
 
 			} else if (board[i][j] == 3) { //food3
 
 				context.beginPath();
 				context.arc(center.x, center.y, 10, 0*Math.PI, 2*Math.PI); 
-				context.fillStyle = "white"; //color
+				context.fillStyle = color25Points; //color
 				context.fill();
 
 			} else if (board[i][j] == 5) { //wall
@@ -539,7 +570,7 @@ function chooseMonsterDirection(m){
 
 function restartGame(){
 	if(confirm("want to play again?")){
-		domInteraction = 1;
+		//domInteraction = 1;
 		soundFail.pause();
 		let life = document.getElementById("pacman1");
 		life.style.display = "inline";
@@ -555,7 +586,8 @@ function restartGame(){
 	}
 	else{
 		soundFail.pause();
-		//here should come a button go back 
+		
+		//navigate back to setting 
 	}
 }
 
@@ -645,10 +677,10 @@ function UpdatePosition() {
 }
 
 function clearKeysDown(){
-	keysDown[37] = false; 
-	keysDown[38] = false; 
-	keysDown[39] = false; 
-	keysDown[40] = false; 
+	keysDown[keyUp] = false; 
+	keysDown[keyDown] = false; 
+	keysDown[keyLeft] = false; 
+	keysDown[keyRight] = false; 
 }
 
 function updatePositionOfSpecialObjects(o, currentTime, delay){

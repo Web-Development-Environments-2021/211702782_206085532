@@ -8,30 +8,30 @@ let accounts = { 'k' : {
     birthdate: '1111-11-11'
 }};
 
-const numpadKeyCodes = {
-   45 : "Numpad0",
-   13 : "NumpadEnter",
-   97 : "Numpad1",
-   98 : "Numpad2",
-   99 : "Numpad3",
-   100 : "Numpad4",
-   101 : "Numpad5",
-   102 : "Numpad6",
-   103 : "Numpad7",
-   104 : "Numpad8",
-   105 : "Numpad9",
-   106 : "NumpadMultiply",
-   107 : "NumpadAdd",
-   109 : "NumpadSubtract",
-   110 : "NumpadDecimal",
-   111 : "NumpadDivide",
-};
-
-const specialKeyboardKeys = {
-    16 : { 1 : "ShiftLeft", 2 : "ShiftRight"},
-    17 : { 1 : "ControlLeft", 2 : "ControlRight"},
-    18 : { 1 : "AltLeft", 2 : "AltRight"},
-};
+const specialKeyboardKeys = [
+   "Numpad0",
+   "NumpadEnter",
+   "Numpad1",
+   "Numpad2",
+   "Numpad3",
+   "Numpad4",
+   "Numpad5",
+   "Numpad6",
+   "Numpad7",
+   "Numpad8",
+   "Numpad9",
+   "NumpadMultiply",
+   "NumpadAdd",
+   "NumpadSubtract",
+   "NumpadDecimal",
+   "NumpadDivide",
+   "ShiftLeft",
+   "ShiftRight",
+   "ControlLeft",
+   "ControlRight",
+   "AltLeft",
+   "AltRight"
+];
 
 const possibleKeys = ['Backspace', 'Tab', 'Enter', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'ControlRight', 'AltLeft', 'AltRight', 'PageUp', 'PageDown', 'End', 'Home', 'ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown', '0', '9', '8', '7', '6', '5', '4', '3', '2', '1', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ';', '=', '-', '.', '/', '[', ']']
 
@@ -204,7 +204,7 @@ function randomizeSettings(){
     // colors
     $("#5PointsDot").val(getRandomColor());
     $("#15PointsDot").val(getRandomColor());
-    $("#20PointsDot").val(getRandomColor());
+    $("#25PointsDot").val(getRandomColor());
 
     // duration
     const duration = $("#settingsDuration");
@@ -221,18 +221,13 @@ function randomizeSettings(){
 function configureSettings(){
 
     // set control configurations
-    $("#controlsConfig").find("input change").each((index, input) => {
+    $("#controlsConfig").find("input").each((index, input) => {
 
         $(input).keydown( (e) => {
             e.preventDefault();
 
-            const keyCode = e.keyCode ? e.keyCode : e.which;
-
-            if (keyCode in specialKeyboardKeys){
+            if (e.code in specialKeyboardKeys){
                 input.value = e.code;
-            }
-            else if (keyCode in numpadKeyCodes){
-                input.value = numpadKeyCodes[keyCode];
             }
             else {
                 input.value = e.key;
@@ -260,28 +255,31 @@ function configureSettings(){
         submitHandler: (form) => {
 
             // controls
-            $("#settingsUp").val();
-            $("#settingsDown").val();
-            $("#settingsLeft").val();
-            $("#settingsRight").val();
+            keyUp = $("#settingsUp").val();
+            keyDown = $("#settingsDown").val();
+            keyLeft = $("#settingsLeft").val();
+            keyRight = $("#settingsRight").val();
 
             // dot amount
-            $("#settingsDotAmount").val();
+            foodAmount = $("#settingsDotAmount").val();
 
             // colors
-            document.getElementById("5PointsDot");
-            $("#15PointsDot").val();
-            $("#20PointsDot").val();
+            color5Points = $("#5PointsDot").val();
+            color15Points = $("#15PointsDot").val();
+            color25Points = $("#25PointsDot").val();
 
             // duration
-            $("#settingsDuration").val();
+            gameTime = $("#settingsDuration").val();
 
             // ghost amount
-            $("#settingsGhostAmount").val();
+            numOfMonsters = $("#settingsGhostAmount").val();
+
+            // start game
+            $("#gameStarter").trigger("change");
 
             // navigate to game
             $("#Settings").addClass("hidden");
-            $("#Game").removeClass("hidden");
+            $("#GameLayout").removeClass("hidden");
             form.reset();
 
             return false;

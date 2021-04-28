@@ -101,6 +101,7 @@
 				</form>
 			</div>
 			<div id="Settings" class="settings hidden">
+				<label id="gameStarter" hidden></label>
 				<h1>Settings</h1>
 				<form id="settingsForm" autocomplete="off">
 					<div id="controlsConfig">
@@ -125,8 +126,8 @@
 						<input name="5PointsDot" id="5PointsDot" type="color" value="#FFC75F">
 						<label for="15PointsDot">15 points dot:</label>
 						<input name="15PointsDot" id="15PointsDot" type="color" value="#3596B5">
-						<label for="20PointsDot">20 points dot:</label>
-						<input name="20PointsDot" id="20PointsDot" type="color" value="#AF5C00">
+						<label for="25PointsDot">25 points dot:</label>
+						<input name="25PointsDot" id="25PointsDot" type="color" value="#AF5C00">
 					</div>
 					<div>
 						<label for="settingsDuration" id="durationLabel">Game duration:<span>(minimum 60 seconds)</span></label>
@@ -160,7 +161,7 @@
 					<p>The problems we faced with the logic of the maze where mainly in adjusting the sizing of the maze to match the coordinates for the characters movements and their drawing. Another interesting problem was how to enable different speeds for the monsters and the pacman, not to make the game too difficult for the player. Also a challenge was to enable sound to run automatically by first interacting with the DOM.</p>
 				</div>
 			</div>
-			<div id="GameLayout">
+			<div id="GameLayout" class="gameLayout hidden">
 				<div id="score">
 					<label for="lblScore">SCORE:</label>
 					<input id="lblScore" type="text" />
@@ -197,15 +198,14 @@
 					</audio>
 				</div>
 				<div id="sound">
-					<audio id="pacman.mpeg"
-						autoplay
+					<audio id="backgroundAudio"
 						loop
 						src="pacman.mpeg"></audio>
 					<button id="playBTN" onclick="playMusic()">Pause music &#9208;</button>
 					
 				</div>
 				<div id="soundFail">
-					<audio id="fail.mpeg"
+					<audio id="gameOverAudio"
 						loop
 						src="fail.mpeg"></audio>
 				</div>						
