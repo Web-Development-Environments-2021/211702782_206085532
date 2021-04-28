@@ -47,6 +47,14 @@ $(document).ready(function() {
 	})
 });
 
+
+// prevent scrolling with game controls
+window.addEventListener("keydown", function(e) {
+    if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+    }
+}, false);
+
 /**
  * This function is triggered when the user wants to enable/disable the music playing
  */
@@ -88,6 +96,9 @@ function playMusic(){
 
 */
 function Start() {
+
+	$("#gameAlerts").find("span").text("");
+
 	board = new Array();
 	score = 0;
 	lives = 5;
@@ -403,6 +414,8 @@ function updateScore(mId){
 	}			
 	if (score<=0 || lives<= 0)
 	{
+		$("#gameAlerts").find("span").text("Loser!");
+
 		if(soundPlaying == 1){
 			sound.pause();
 		}
@@ -479,7 +492,9 @@ function updateMonsterPosition(m){
 	after each catch by monster 
 */
 function caught(board){
-	alert("you're not carefull");
+	
+	$("#gameAlerts").find("span").text("you're not carefull");
+	// alert("you're not carefull");
 			shape.i = 0;
 			shape.j = 0;
 			let emptyCell = findRandomEmptyCell(board);
@@ -666,10 +681,12 @@ function UpdatePosition() {
 	if ((currentTime - start_time)/1000 >= gameTime && lives > 0) {
 		window.clearInterval(interval);
 		if(score>100){
-			window.alert("Winner!!!");
+			$("#gameAlerts").find("span").text("Winner!!!");
+			// window.alert("Winner!!!");
 		}
 		else{
-			window.alert("You are better than " + score + "points!");
+			$("#gameAlerts").find("span").text("You are better than " + score + "points!");
+			// window.alert("You are better than " + score + "points!");
 		}
 		clearKeysDown();
 		sound.pause();	
