@@ -6,6 +6,7 @@
 		<title>PACMAN-HEROS</title>
 		<link rel="stylesheet" type="text/css" href="css/layout.css"/>
 		<link rel="stylesheet" type="text/css" href="css/pages.css"/>
+		<link rel="stylesheet" type="text/css" href="content.css" />
 	</head>
 
 	<body>
@@ -159,8 +160,57 @@
 					<p>The problems we faced with the logic of the maze where mainly in adjusting the sizing of the maze to match the coordinates for the characters movements and their drawing. Another interesting problem was how to enable different speeds for the monsters and the pacman, not to make the game too difficult for the player. Also a challenge was to enable sound to run automatically by first interacting with the DOM.</p>
 				</div>
 			</div>
+			<div id="GameLayout">
+				<div id="score">
+					<label for="lblScore">SCORE:</label>
+					<input id="lblScore" type="text" />
+				</div>
+				<div id="time">
+					<label for="lblTime">TIME:</label>
+					<input id="lblTime" type="text" />
+				</div>
+				<div id="lives">
+					<label for="lblLives">LIVES:</label>
+					<img id="pacman1" width = "45" height= "30" src="pacman.png" >
+					<img id="pacman2" width = "45" height= "30" src="pacman.png" >
+					<img id="pacman3" width = "45" height= "30" src="pacman.png" >
+					<img id="pacman4" width = "45" height= "30" src="pacman.png" >
+					<img id="pacman5" width = "45" height= "30" src="pacman.png" >
+				</div>
+				<div id="game">				
+					<img id="p1.png" class = "hidden" width = "30" height= "30" src="p1.png" >
+					<img id="p2.png" class = "hidden" width = "30" height= "30" src="p2.png" >
+					<img id="p3.png" class = "hidden" width = "30" height= "30" src="p3.png" >
+					<img id="p4.png" class = "hidden" width = "30" height= "30" src="p4.png" >
+	
+					<img id="md.png" class = "hidden" width = "30" height= "30" src="md.png" >
+					<img id="clock.png" class = "hidden" width = "30" height= "30" src="clock.png" >
+					<img id="candy.png" class = "hidden" width = "30" height= "30" src="c1.png" >
+					<img id="rip.png" class = "hidden" width = "30" height= "30" src="rip.png" >
+					
+					<img id="loser.png" class = "hidden" width = "30" height= "30" src="loser.png" >
+					
+					<img id="mute.png" class = "hidden" width = "30" height= "30" src="mute.png" >	
+					<img id="unmute.png" class = "hidden" width = "30" height= "30" src="unmute.png" >	
+	
+					<canvas id="gameCanvas" height="600" width="600"></canvas>				
+					</audio>
+				</div>
+				<div id="sound">
+					<audio id="pacman.mpeg"
+						autoplay
+						loop
+						src="pacman.mpeg"></audio>
+					<button id="playBTN" onclick="playMusic()">Pause music &#9208;</button>
+					
+				</div>
+				<div id="soundFail">
+					<audio id="fail.mpeg"
+						loop
+						src="fail.mpeg"></audio>
+				</div>						
+			</div>
 		</div>
-
 		<div class="footer">
 			<span>Contact us: </span>
 			<span>Yair Chertkow - yairch@post.bgu.ac.il</span>
@@ -171,5 +221,6 @@
 		<script type="text/javascript" src="js/jquery.validate.min.js"></script>
 		<script type="text/javascript" src="js/formInputs.js"></script>
 		<script type="text/javascript" src="js/layout.js"></script>
+		<script type="text/javascript" src="./app.js"></script>
 	</body>
 </html>
