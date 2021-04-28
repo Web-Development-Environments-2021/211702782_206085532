@@ -38,7 +38,7 @@
 
 		<div id="content" class="content">
 			
-			<div id="Welcome" class="welcome">
+			<div id="Welcome" class="welcome hidden">
 				<img src="resources/3dBlueGhost.png"/>
 				<div class="buttons">
 					<button id="welcomeRegisterButton">Sign Up</button>
@@ -100,11 +100,11 @@
 					</div>
 				</form>
 			</div>
-			<div id="Settings" class="settings hidden">
+			<div id="Settings" class="settings">
 				<label id="gameStarter" hidden></label>
 				<h1>Settings</h1>
 				<form id="settingsForm" autocomplete="off">
-					<div id="controlsConfig">
+					<div id="controlsConfig" class="controlsConfig">
 						<h2>Controls configuration:</h2>
 						<label for="settingsUp">Up:</label>
 						<input name="settingsUp" id="settingsUp" type="text" value="ArrowUp">
@@ -162,52 +162,81 @@
 				</div>
 			</div>
 			<div id="GameLayout" class="gameLayout hidden">
-				<div id="score">
-					<label for="lblScore">SCORE:</label>
-					<input id="lblScore" type="text" />
+				<h1>Game On</h1>
+				<div class="gameInfo">
+					<div class="gameStats">
+						<div id="score">
+							<label for="lblScore" class="mainHeadline">SCORE:</label>
+							<input id="lblScore" type="text" disabled/>
+						</div>
+						<div id="time">
+							<label for="lblTime" class="mainHeadline">TIME:</label>
+							<input id="lblTime" type="text" disabled/>
+						</div>
+						<div id="lives">
+							<label for="lblLives" class="mainHeadline">LIVES:</label>
+							<img id="pacman1" width = "45" height= "30" src="resources/pacman.png" >
+							<img id="pacman2" width = "45" height= "30" src="resources/pacman.png" >
+							<img id="pacman3" width = "45" height= "30" src="resources/pacman.png" >
+							<img id="pacman4" width = "45" height= "30" src="resources/pacman.png" >
+							<img id="pacman5" width = "45" height= "30" src="resources/pacman.png" >
+						</div>
+					</div>
+					<div class="gameCurrentSettings">
+						<div>
+							<label class="mainHeadline blockElement">Controls configuration:</label>
+							<label class="subHeadline">Up: <span id ="inGameUp"></span></label>
+							<label class="subHeadline">Down: <span id="inGameDown"></span></label>
+							<label class="subHeadline">Left: <span id="inGameLeft"></span></label>
+							<label class="subHeadline">Right: <span id="inGameRight"></span></label>
+						</div>
+						<div>
+							<label class="mainHeadline">Number of dots: <span id="inGameDotAmount" class="subHeadline"></span></label>
+						</div>
+						<div>
+							<label class="mainHeadline blockElement">Dot color configuration:</label>
+							<label class="subHeadline">5 points dot:</label>
+							<input id="inGame5Point" type="color" value="#FFC75F" disabled>
+							<label class="subHeadline">15 points dot:</label>
+							<input id="inGame15Point" type="color" value="#3596B5" disabled>
+							<label class="subHeadline">25 points dot:</label>
+							<input id="inGame25Point" type="color" value="#AF5C00" disabled>
+						</div>
+						<div>
+							<label class="mainHeadline">Initial game duration: <span id="inGameDuration" class="subHeadline"></span></label>
+						</div>
+						<div>
+							<label class="mainHeadline">Number of ghosts: <span id="inGameGhostAmount" class="subHeadline"></span></label>
+						</div>
+					</div>
 				</div>
-				<div id="time">
-					<label for="lblTime">TIME:</label>
-					<input id="lblTime" type="text" />
-				</div>
-				<div id="lives">
-					<label for="lblLives">LIVES:</label>
-					<img id="pacman1" width = "45" height= "30" src="pacman.png" >
-					<img id="pacman2" width = "45" height= "30" src="pacman.png" >
-					<img id="pacman3" width = "45" height= "30" src="pacman.png" >
-					<img id="pacman4" width = "45" height= "30" src="pacman.png" >
-					<img id="pacman5" width = "45" height= "30" src="pacman.png" >
-				</div>
-				<div id="game">				
-					<img id="p1.png" class = "hidden" width = "30" height= "30" src="p1.png" >
-					<img id="p2.png" class = "hidden" width = "30" height= "30" src="p2.png" >
-					<img id="p3.png" class = "hidden" width = "30" height= "30" src="p3.png" >
-					<img id="p4.png" class = "hidden" width = "30" height= "30" src="p4.png" >
+				<div id="game" class="gameCanvas">				
+					<img id="p1.png" class = "hidden" width = "30" height= "30" src="resources/p1.png" >
+					<img id="p2.png" class = "hidden" width = "30" height= "30" src="resources/p2.png" >
+					<img id="p3.png" class = "hidden" width = "30" height= "30" src="resources/p3.png" >
+					<img id="p4.png" class = "hidden" width = "30" height= "30" src="resources/p4.png" >
 	
-					<img id="md.png" class = "hidden" width = "30" height= "30" src="md.png" >
-					<img id="clock.png" class = "hidden" width = "30" height= "30" src="clock.png" >
-					<img id="candy.png" class = "hidden" width = "30" height= "30" src="c1.png" >
-					<img id="rip.png" class = "hidden" width = "30" height= "30" src="rip.png" >
-					
-					<img id="loser.png" class = "hidden" width = "30" height= "30" src="loser.png" >
-					
-					<img id="mute.png" class = "hidden" width = "30" height= "30" src="mute.png" >	
-					<img id="unmute.png" class = "hidden" width = "30" height= "30" src="unmute.png" >	
+					<img id="md.png" class = "hidden" width = "30" height= "30" src="resources/md.png" >
+					<img id="clock.png" class = "hidden" width = "30" height= "30" src="resources/clock.png" >
+					<img id="candy.png" class = "hidden" width = "30" height= "30" src="resources/c1.png" >
+					<img id="rip.png" class = "hidden" width = "30" height= "30" src="resources/rip.png" >
 	
-					<canvas id="gameCanvas" height="600" width="600"></canvas>				
-					</audio>
+					<canvas id="gameCanvas" height="600" width="600"></canvas>
+				</div>
+				<div class="buttons">
+					<button id="playBTN" onclick="playMusic()">Pause music &#9208;</button>
+					<button id="playAgain" onclick="restartGame()">play again</button>
+					<button id="returnToSettings" onclick="navigateToSettings()">back to settings</button>
 				</div>
 				<div id="sound">
 					<audio id="backgroundAudio"
 						loop
-						src="pacman.mpeg"></audio>
-					<button id="playBTN" onclick="playMusic()">Pause music &#9208;</button>
-					
+						src="resources/pacman.mpeg"></audio>
 				</div>
 				<div id="soundFail">
 					<audio id="gameOverAudio"
 						loop
-						src="fail.mpeg"></audio>
+						src="resources/fail.mpeg"></audio>
 				</div>						
 			</div>
 		</div>
@@ -221,6 +250,6 @@
 		<script type="text/javascript" src="js/jquery.validate.min.js"></script>
 		<script type="text/javascript" src="js/formInputs.js"></script>
 		<script type="text/javascript" src="js/layout.js"></script>
-		<script type="text/javascript" src="./app.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
 	</body>
 </html>

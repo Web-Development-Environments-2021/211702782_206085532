@@ -363,6 +363,14 @@
     border: 2px solid var(--backgroundDeep);
 }
 
+.controlsConfig input {
+
+    width: 15ch;
+    text-align: center;
+    background: var(--contentWhitest);
+    border: none;
+}
+
 .settings .buttons {
 
     display: flex;
@@ -391,6 +399,155 @@
 
     margin-top: 1rem;
 }
+
+/* game page */
+
+.gameLayout {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gameLayout h1 {
+
+    margin-bottom: 0.75em;
+    color: var(--contentLight);
+    font-size: 3rem;
+    font-weight: bold;
+    position: relative;
+}
+
+.gameLayout h1::after {
+    
+    content: '';
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 150%;
+    transform: translateX(-16.666%);
+    bottom: -0.1em;
+    background: var(--contentLight);
+}
+
+.gameLayout :is(.gameInfo, .gameCanvas) {
+
+    margin-bottom: 2rem;
+}
+
+.gameLayout :is(.gameStats, .gameCurrentSettings, .buttons) {
+
+    background: var(--backgroundDark);
+    padding: 1.5rem;
+    border-radius: 3rem / 5rem;
+    box-shadow: 0 0 0.625em 0 rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--backgroundDeep)
+}
+
+.gameInfo {
+    
+    display: flex;
+    flex-direction: row;
+    place-content: center;
+}
+
+.gameStats {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-right: 3rem;
+}
+
+.gameStats input {
+    
+    margin: 0 0.5rem;
+    width: 15ch;
+    color: var(--contentDark);
+    font-weight: bold;
+    text-align: center;
+    background: var(--contentWhitest);
+    border: 2px solid var(--backgroundDeep);
+}
+
+.gameStats input:focus {
+
+    outline: none;
+    border: 2px solid var(--backgroundDeep);
+}
+
+
+.gameLayout .mainHeadline{
+
+    color: var(--contentBrightLight);
+    font-size: 1.7rem;
+    font-weight: normal;
+}
+
+.gameCurrentSettings .blockElement {
+    
+    display: block;
+}
+
+.gameCurrentSettings label {
+    
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.gameLayout .subHeadline {
+
+    color: var(--contentWhitest);
+    font-size: 1.2rem;
+}
+
+.gameLayout span {
+
+    opacity: 0.9;
+    text-decoration: underline;
+    font-size: 1rem;
+    margin: 0 0.4rem;
+}
+
+.gameCanvas {
+
+    padding: 1%;
+    border: 10px double var(--backgroundDeep);
+    border-radius: 1rem;
+    box-shadow: 0 0 10px 5px rgba(70, 39, 132, 0.3),
+                inset 0 0 5px 2px rgba(70, 39, 132, 0.3);
+}
+
+
+.gameLayout .buttons {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    vertical-align: middle;
+    margin-top: 2rem;
+}
+
+.gameLayout button {
+
+    padding: 0.25rem 2.5rem;
+    font-size: 1.5rem;
+    color: var(--contentLight);
+    background-color: var(--backgroundDeep);
+    border-radius: 0.625rem;
+    outline: none;
+}
+
+.gameLayout button:focus {
+
+    color: var(--contentDark);
+}
+
+.gameLayout button + button {
+
+    margin-left: 1rem;
+}
+
 
 /* hidden panels (last for speceficity)*/
 

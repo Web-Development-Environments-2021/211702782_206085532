@@ -122,7 +122,7 @@ function Start() {
 		"keydown",
 		function(e) {
 			let key;
-			if (e.code in specialKeyboardKeys){
+			if (specialKeyboardKeys.includes(e.code)){
 				key = e.code;
 			}
 			else {
@@ -138,7 +138,7 @@ function Start() {
 		function(e) {
 
 			let key;
-			if (e.code in specialKeyboardKeys){
+			if (specialKeyboardKeys.includes(e.code)){
 				key = e.code;
 			}
 			else {
