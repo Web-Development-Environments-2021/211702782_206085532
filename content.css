@@ -2,12 +2,12 @@
 /* #game {
     display: none;
 }*/ 
-img {
+.hidden {
     display: none;
 }
 
 button{
-    background-color:  #C197FF;
+    background-color:  #4B4453;
     color: aqua;
     padding: 10px 25px;
     font-size: 22px;
@@ -15,4 +15,5 @@ button{
     min-width: 150px;
     text-align: center;
     border-radius: 5px;
+    box-shadow: azure;
 }

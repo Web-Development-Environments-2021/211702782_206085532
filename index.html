@@ -17,7 +17,11 @@
 		</div>
 		<div id="lives">
 			<label for="lblLives">LIVES:</label>
-			<input id="lblLives" type="text" />
+			<img id="pacman1" width = "45" height= "30" src="pacman.png" >
+			<img id="pacman2" width = "45" height= "30" src="pacman.png" >
+			<img id="pacman3" width = "45" height= "30" src="pacman.png" >
+			<img id="pacman4" width = "45" height= "30" src="pacman.png" >
+			<img id="pacman5" width = "45" height= "30" src="pacman.png" >
 		</div>
 
 		<div id="content">
@@ -25,24 +29,31 @@
 				<canvas id="canvas" height="600" width="600"></canvas>
 			</div> -->
 			<div id="game">				
-				<img id="p1.png" width = "30" height= "30" src="p1.png" >
-				<img id="p2.png" width = "30" height= "30" src="p2.png" >
-				<img id="p3.png" width = "30" height= "30" src="p3.png" >
-				<img id="p4.png" width = "30" height= "30" src="p4.png" >
+				<img id="p1.png" class = "hidden" width = "30" height= "30" src="p1.png" >
+				<img id="p2.png" class = "hidden" width = "30" height= "30" src="p2.png" >
+				<img id="p3.png" class = "hidden" width = "30" height= "30" src="p3.png" >
+				<img id="p4.png" class = "hidden" width = "30" height= "30" src="p4.png" >
 
-				<img id="md.png" width = "30" height= "30" src="md.png" >
-				<img id="clock.png" width = "30" height= "30" src="clock.png" >
-				<img id="candy.png" width = "30" height= "30" src="c1.png" >
-				<img id="rip.png" width = "30" height= "30" src="rip.png" >				
+				<img id="md.png" class = "hidden" width = "30" height= "30" src="md.png" >
+				<img id="clock.png" class = "hidden" width = "30" height= "30" src="clock.png" >
+				<img id="candy.png" class = "hidden" width = "30" height= "30" src="c1.png" >
+				<img id="rip.png" class = "hidden" width = "30" height= "30" src="rip.png" >
+				
+				<img id="loser.png" class = "hidden" width = "30" height= "30" src="loser.png" >
+				
+				<img id="mute.png" class = "hidden" width = "30" height= "30" src="mute.png" >	
+				<img id="unmute.png" class = "hidden" width = "30" height= "30" src="unmute.png" >	
 
 				<canvas id="gameCanvas" height="600" width="600"></canvas>				
 				</audio>
 			</div>
 			<div id="sound">
 				<audio id="pacman.mpeg"
+					autoplay
 					loop
 					src="pacman.mpeg"></audio>
-				<button id="playBTN" onclick="playTheBTN()">Play music &#9658;</button>
+				<button id="playBTN" onclick="playMusic()">Pause music &#9208;</button>
+				
 			</div>
 			<div id="soundFail">
 				<audio id="fail.mpeg"
