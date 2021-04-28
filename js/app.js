@@ -187,7 +187,7 @@ function initGameBoard(food_remain, food, pacman_remain, cnt){
 			if(board[i][j] != 5 && board[i][j] != 12 && (board[i][j] < 6 || board[i][j] > 9)) {				
 				var randomNum = Math.random();
 				if (randomNum <= (1.0 * food_remain) / cnt) { //draw food
-					while(food[Math.floor(randomNum*10)%3] <= 0){ 
+					while(food[Math.floor(randomNum*10)%3] <= 0 && food_remain>0){ 
 						randomNum = Math.random();
 					}							
 					food_remain--;
