@@ -430,7 +430,7 @@
     background: var(--contentLight);
 }
 
-.gameLayout :is(.gameInfo, .gameCanvas) {
+.gameLayout :is(.gameInfo, .gameCanvas, .gameAlerts) {
 
     margin-bottom: 2rem;
 }
@@ -548,6 +548,15 @@
     margin-left: 1rem;
 }
 
+.gameAlerts span {
+
+    color: var(--error);
+    font-size: 3rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.125ch;
+}
 
 /* hidden panels (last for speceficity)*/
 
