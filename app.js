@@ -43,7 +43,6 @@ $(document).ready(function() {
 		
 		soundFail = document.getElementById('gameOverAudio'); 
 		sound = document.getElementById('backgroundAudio'); 
-		sound.volume = 0.5;
 		Start();
 	})
 });
