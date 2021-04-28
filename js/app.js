@@ -685,7 +685,7 @@ function UpdatePosition() {
 			// window.alert("Winner!!!");
 		}
 		else{
-			$("#gameAlerts").find("span").text("You are better than " + score + "points!");
+			$("#gameAlerts").find("span").text("You are better than " + score + " points!");
 			// window.alert("You are better than " + score + "points!");
 		}
 		clearKeysDown();
