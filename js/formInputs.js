@@ -226,7 +226,7 @@ function configureSettings(){
         $(input).keydown( (e) => {
             e.preventDefault();
 
-            if (e.code in specialKeyboardKeys){
+            if (specialKeyboardKeys.includes(e.code)){
                 input.value = e.code;
             }
             else {
@@ -274,6 +274,22 @@ function configureSettings(){
             // ghost amount
             numOfMonsters = $("#settingsGhostAmount").val();
 
+            // update in-game settings display
+            $("#inGameUp").text(keyUp);
+            $("#inGameDown").text(keyDown);
+            $("#inGameLeft").text(keyLeft);
+            $("#inGameRight").text(keyRight);
+
+            $("#inGameDotAmount").text(foodAmount);
+
+            $("#inGame5Point").val(color5Points);
+            $("#inGame15Point").val(color15Points);
+            $("#inGame25Point").val(color25Points);
+
+            $("#inGameDuration").text(gameTime);
+
+            $("#inGameGhostAmount").text(numOfMonsters);
+            
             // start game
             $("#gameStarter").trigger("change");
 
@@ -285,6 +301,10 @@ function configureSettings(){
             return false;
         }
     });
+}
+
+function updateInGameSettings(){
+
 }
 
 $(document).ready( _ => {
