@@ -1,65 +1,226 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="./jquery-3.4.1.slim.min.js"></script>
-		<script type="text/javascript" src="./app.js"></script>
+		<meta name="keywords" content="pacman, heros, university, project, game, programming, web, bgu, student, css, html, javascript, responsive, nerd, design">
+		<meta name="decription" content="This site is a student project under Software and Information Systems degree in Ben Gurion university.">
+		<title>PACMAN-HEROS</title>
+		<link rel="stylesheet" type="text/css" href="css/layout.css"/>
+		<link rel="stylesheet" type="text/css" href="css/pages.css"/>
 		<link rel="stylesheet" type="text/css" href="content.css" />
 	</head>
 
 	<body>
-		<div id="score">
-			<label for="lblScore">SCORE:</label>
-			<input id="lblScore" type="text" />
-		</div>
-		<div id="time">
-			<label for="lblTime">TIME:</label>
-			<input id="lblTime" type="text" />
-		</div>
-		<div id="lives">
-			<label for="lblLives">LIVES:</label>
-			<img id="pacman1" width = "45" height= "30" src="pacman.png" >
-			<img id="pacman2" width = "45" height= "30" src="pacman.png" >
-			<img id="pacman3" width = "45" height= "30" src="pacman.png" >
-			<img id="pacman4" width = "45" height= "30" src="pacman.png" >
-			<img id="pacman5" width = "45" height= "30" src="pacman.png" >
+		
+		
+		<div id="menu" class="menu">
+			<header>
+				<label for="navToggle" class="navToggleLabel">
+					<img class="menuBarIcon" src="resources/menuBarIconBright.png">
+					<img class="closeIcon" src="resources/closeIconBright.png">
+				</label>
+				<span class="logo">
+					<img src="resources/3dBlueGhost.png"/>
+				</span>
+				<span id="appName" class="appName">Pacman-Heros</span>
+				<span id= "creators" class="creators">Yair Chertkow & Gila Dorfman</span>
+			</header>
+
+			<input type="checkbox" id="navToggle" class="navToggle">
+			<nav>
+				<ul>
+					<li><a id="navWelcome">Welcome</a></li>
+					<li><a id="navSignUp">Sign Up</a></li>
+					<li><a id="navLogin">Login</a></li>
+					<li><a id="navAbout">About</a></li>
+				</ul>
+			</nav>
 		</div>
 
-		<div id="content">
-			<!-- <div id="welcome"> 
-				<canvas id="canvas" height="600" width="600"></canvas>
-			</div> -->
-			<div id="game">				
-				<img id="p1.png" class = "hidden" width = "30" height= "30" src="p1.png" >
-				<img id="p2.png" class = "hidden" width = "30" height= "30" src="p2.png" >
-				<img id="p3.png" class = "hidden" width = "30" height= "30" src="p3.png" >
-				<img id="p4.png" class = "hidden" width = "30" height= "30" src="p4.png" >
-
-				<img id="md.png" class = "hidden" width = "30" height= "30" src="md.png" >
-				<img id="clock.png" class = "hidden" width = "30" height= "30" src="clock.png" >
-				<img id="candy.png" class = "hidden" width = "30" height= "30" src="c1.png" >
-				<img id="rip.png" class = "hidden" width = "30" height= "30" src="rip.png" >
-				
-				<img id="loser.png" class = "hidden" width = "30" height= "30" src="loser.png" >
-				
-				<img id="mute.png" class = "hidden" width = "30" height= "30" src="mute.png" >	
-				<img id="unmute.png" class = "hidden" width = "30" height= "30" src="unmute.png" >	
-
-				<canvas id="gameCanvas" height="600" width="600"></canvas>				
-				</audio>
+		<div id="content" class="content">
+			
+			<div id="Welcome" class="welcome">
+				<img src="resources/3dBlueGhost.png"/>
+				<div class="buttons">
+					<button id="welcomeRegisterButton">Sign Up</button>
+					<button id="welcomeLoginButton">Login</button>
+				</div>
 			</div>
-			<div id="sound">
-				<audio id="pacman.mpeg"
-					autoplay
-					loop
-					src="pacman.mpeg"></audio>
-				<button id="playBTN" onclick="playMusic()">Pause music &#9208;</button>
-				
+			<div id="SignUp" class="registration hidden">
+				<h1>Sign Up</h1>
+				<form id="registerForm" method="GET">
+					<div>
+						<label for="usernameSignUp">User name: <span>(at least 3 characters)</span></label>
+						<input name="usernameSignUp" id="usernameSignUp" type="text">
+						<span class="requiredTag">*</span>
+					</div>
+					<div>
+						<label for="passwordSignUp">Password: <span>(at least 6 characters. must include letters and digits)</span></label>
+						<input name="passwordSignUp" id="passwordSignUp" type="password">
+						<span class="requiredTag">*</span>
+					</div>
+					<div>
+						<label for="firstnameSignUp">First name:</label>
+						<input name="firstnameSignUp" id="firstnameSignUp" type="text">
+						<span class="requiredTag">*</span>
+					</div>
+					<div>
+						<label for="lastnameSignUp">Last name:</label>
+						<input name="lastnameSignUp" id="lastnameSignUp" type="text">
+						<span class="requiredTag">*</span>
+					</div>
+					<div>
+						<label for="emailSignUp">Email:</label>
+						<input name="emailSignUp" id="emailSignUp" type="email">
+						<span class="requiredTag">*</span>
+					</div>
+					<div>
+						<label for="birthdateSignUp">Birth date:</label>
+						<input name="birthdateSignUp" id="birthdateSignUp" type="date">
+						<span class="requiredTag">*</span>
+					</div>
+					<div class="buttons">
+						<button name="signUpButton" id="signUpButton" type="submit">Sign Up</button>
+						<button name="resetSignUp" id="resetSignUp" type="reset">Clear</button>
+					</div>
+				</form>
 			</div>
-			<div id="soundFail">
-				<audio id="fail.mpeg"
-					loop
-					src="fail.mpeg"></audio>
-			</div>						
-		</div>		
+			<div id="Login" class="login hidden">
+				<h1>Login</h1>
+				<form id="loginForm" method="GET">
+					<div>
+						<label for="usernameLogin">Username:</label>
+						<input name="usernameLogin" id="usernameLogin" type="text">
+					</div>
+					<div>
+						<label for="passwordLogin" >Password:</label>
+						<input name="passwordLogin" id="passwordLogin" type="password">
+					</div>
+					<div id="loginButtons" class="buttons">
+						<button name="loginButton" id="loginButton" type="submit">Login</button>
+					</div>
+				</form>
+			</div>
+			<div id="Settings" class="settings hidden">
+				<label id="gameStarter" hidden></label>
+				<h1>Settings</h1>
+				<form id="settingsForm" autocomplete="off">
+					<div id="controlsConfig">
+						<h2>Controls configuration:</h2>
+						<label for="settingsUp">Up:</label>
+						<input name="settingsUp" id="settingsUp" type="text" value="ArrowUp">
+						<label for="settingsDown">Down:</label>
+						<input name="settingsDown" id="settingsDown" type="text" value="ArrowDown">
+						<label for="settingsLeft">Left:</label>
+						<input name="settingsLeft" id="settingsLeft" type="text" value="ArrowLeft">
+						<label for="settingsRight">Right:</label>
+						<input name="settingsRight" id="settingsRight" type="text" value="ArrowRight">
+					</div>
+					<div>
+						<label for="settingsDotAmount" id="dotAmountLabel">Choose number of dots: <span>(between 50 to 90)</span></label>
+						<input name="settingsDotAmount" id="settingsDotAmount" type="range" min="50" max="90" value="50">
+						<output>50</output>
+					</div>
+					<div id="colorConfiguration">
+						<h2>Dot color configuration:</h2>
+						<label for="5PointsDot">5 points dot:</label>
+						<input name="5PointsDot" id="5PointsDot" type="color" value="#FFC75F">
+						<label for="15PointsDot">15 points dot:</label>
+						<input name="15PointsDot" id="15PointsDot" type="color" value="#3596B5">
+						<label for="25PointsDot">25 points dot:</label>
+						<input name="25PointsDot" id="25PointsDot" type="color" value="#AF5C00">
+					</div>
+					<div>
+						<label for="settingsDuration" id="durationLabel">Game duration:<span>(minimum 60 seconds)</span></label>
+						<input name="settingsDuration" id="settingsDuration" type="range" min="60" max="120" value="60">
+						<output>60</output>
+					</div>
+					<div>
+						<label for="settingsGhostAmount" id="ghostAmountLabel">Choose number of ghosts:<span>(between 1 to 4 ghosts)</span></label>
+						<input name="settingsGhostAmount" id="settingsGhostAmount" type="range" min="1" max="4" value="3">
+						<output>3</output>
+					</div>
+					<div class="buttons">
+						<button name="randomizeSettings" id="randomizeSettings">Let Chance Decide</button>
+						<button name="playFromSettings" id="playFromSettings" type="submit">Play</button>
+					</div>
+				</form>
+			</div>
+			<div id="About" class="aboutOverlay hidden">
+				<div class="about">
+					<img id="aboutCloseIcon" class="aboutCloseIcon" src="resources/closeIconBright.png">
+					<h1>Yair Chertkow & Gila Dorfman</h1>
+					<h2>JQuery plugins we used:</h2>
+					<ul>
+						<li>https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js</li>
+					</ul>
+					<h2>Templates:</h2>
+					<p>We didn't use any template in our website.</p>
+					<h2>Difficulties we ran into:</h2>
+					<p>It was quite challenging getting used to javascript and the differences between javascript and jquery. Making the navigation between the pages seemed an easy task at first, but along with using a form we ran into bugs on the way that needed our attention.</p>
+					<p>Making our imagination a reality through CSS and JS was another challenge but it was very rewarding, enjoyable and a great learning experience.</p>
+					<p>The problems we faced with the logic of the maze where mainly in adjusting the sizing of the maze to match the coordinates for the characters movements and their drawing. Another interesting problem was how to enable different speeds for the monsters and the pacman, not to make the game too difficult for the player. Also a challenge was to enable sound to run automatically by first interacting with the DOM.</p>
+				</div>
+			</div>
+			<div id="GameLayout" class="gameLayout hidden">
+				<div id="score">
+					<label for="lblScore">SCORE:</label>
+					<input id="lblScore" type="text" />
+				</div>
+				<div id="time">
+					<label for="lblTime">TIME:</label>
+					<input id="lblTime" type="text" />
+				</div>
+				<div id="lives">
+					<label for="lblLives">LIVES:</label>
+					<img id="pacman1" width = "45" height= "30" src="pacman.png" >
+					<img id="pacman2" width = "45" height= "30" src="pacman.png" >
+					<img id="pacman3" width = "45" height= "30" src="pacman.png" >
+					<img id="pacman4" width = "45" height= "30" src="pacman.png" >
+					<img id="pacman5" width = "45" height= "30" src="pacman.png" >
+				</div>
+				<div id="game">				
+					<img id="p1.png" class = "hidden" width = "30" height= "30" src="p1.png" >
+					<img id="p2.png" class = "hidden" width = "30" height= "30" src="p2.png" >
+					<img id="p3.png" class = "hidden" width = "30" height= "30" src="p3.png" >
+					<img id="p4.png" class = "hidden" width = "30" height= "30" src="p4.png" >
+	
+					<img id="md.png" class = "hidden" width = "30" height= "30" src="md.png" >
+					<img id="clock.png" class = "hidden" width = "30" height= "30" src="clock.png" >
+					<img id="candy.png" class = "hidden" width = "30" height= "30" src="c1.png" >
+					<img id="rip.png" class = "hidden" width = "30" height= "30" src="rip.png" >
+					
+					<img id="loser.png" class = "hidden" width = "30" height= "30" src="loser.png" >
+					
+					<img id="mute.png" class = "hidden" width = "30" height= "30" src="mute.png" >	
+					<img id="unmute.png" class = "hidden" width = "30" height= "30" src="unmute.png" >	
+	
+					<canvas id="gameCanvas" height="600" width="600"></canvas>				
+					</audio>
+				</div>
+				<div id="sound">
+					<audio id="backgroundAudio"
+						loop
+						src="pacman.mpeg"></audio>
+					<button id="playBTN" onclick="playMusic()">Pause music &#9208;</button>
+					
+				</div>
+				<div id="soundFail">
+					<audio id="gameOverAudio"
+						loop
+						src="fail.mpeg"></audio>
+				</div>						
+			</div>
+		</div>
+		<div class="footer">
+			<span>Contact us: </span>
+			<span>Yair Chertkow - yairch@post.bgu.ac.il</span>
+			<span>Gila Dorfman - dorfmag@post.bgu.ac.il</span>
+		</div>
+
+		<script src="./jquery-3.4.1.slim.min.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="js/formInputs.js"></script>
+		<script type="text/javascript" src="js/layout.js"></script>
+		<script type="text/javascript" src="./app.js"></script>
 	</body>
 </html>

@@ -1,0 +1,237 @@
+:root {
+
+    --baseDark: #4B4453;
+    --baseLight: #B0A8B9;
+    --backgroundDark: rgba(132, 94, 194, 0.85); /* #845EC2 */
+    --backgroundLight: #C197FF;
+    --contentDark: #005B44;
+    --contentLight: #00C9A7;
+    --contentBrightLight: #4FFBDF;
+
+    background: var(--baseDark);
+}
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* header styles */
+
+.menu {
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+    box-shadow: 0 0 0.625rem 0.625rem rgba(0, 0, 0, 0.2);
+}
+
+header {
+
+    padding: 0.25rem;
+    background-color: var(--backgroundDark);
+    width: 100%;
+    display: flex;
+    place-content: center;
+    white-space: nowrap;
+}
+
+header > *:not(:first-child) {
+
+    margin-left: 1rem;
+    align-items: center;
+    display: inline-flex;
+}
+
+header span {
+
+    font-size: 1.5rem;
+    color: var(--contentBrightLight);
+    text-transform: uppercase;
+    letter-spacing: 0.125ch;
+}
+
+.navToggle {
+    display: none;
+}
+
+.navToggleLabel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 1rem;
+    padding: 0.25rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navToggleLabel img {
+
+    height: 1.125rem;
+    width: 1.125rem;
+}
+
+.logo img {
+
+    height: 2rem;
+    width: 2rem;
+}
+
+/* navigation styles */
+
+nav {
+
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    left: 0;
+    background: var(--backgroundDark);
+    box-shadow: 0.5rem 0.5rem 0.625rem 0rem rgba(0, 0, 0, 0.2);
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 300ms ease-in-out;
+    padding: 0.5rem 0;
+}
+
+nav ul {
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    text-align: center;
+    padding: 0 0.25rem;
+}
+
+nav li:first-of-type {
+
+    margin-left: 1rem;
+}
+
+nav li:last-of-type {
+
+    margin-right: 1rem;
+}
+
+nav li:is(:nth-of-type(1)) {
+    width: 15ch;
+}
+
+nav li:is(:nth-of-type(2)) {
+    width: 12ch;
+}
+
+nav li:is(:nth-of-type(3), :nth-of-type(4)) {
+    width: 10ch;
+}
+
+nav a {
+
+    color: var(--contentBrightLight);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.125ch;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 100ms ease-in-out;
+    position: relative;
+    cursor: pointer;
+}
+
+
+nav a:hover {
+
+    color: var(--contentDark);
+    font-weight: bold;
+}
+
+nav a::before {
+
+    content: '';
+    display: block;
+    height: 3px;
+    background: var(--contentDark);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.4rem;
+    transform: scale(0, 1);
+    transition: transform 200ms ease-in-out;
+}
+
+nav a:hover::before {
+
+    transform: scale(1, 1);
+}
+
+.navToggle:checked ~ nav {
+
+    transform: scale(1, 1);
+}
+
+.navToggle:checked ~ nav a {
+    
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 150ms;
+}
+
+.closeIcon {
+    display: none;
+}
+
+.navOpen .closeIcon {
+    display: block;
+}
+
+.navOpen .menuBarIcon {
+    display: none;
+}
+
+
+/* content styles */
+
+.content {
+
+    display: flex;
+    place-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* footer styles */
+
+.footer {
+
+    background: var(--backgroundDark);
+    color: var(--contentLight);
+    font-size: 1.125em;
+    text-align: center;
+    margin-top: auto;
+    box-shadow: 0 0 0.625em 0.625em rgba(0, 0, 0, 0.2);
+
+}
+
+.footer span + span {
+
+    margin-left: 2rem;
+}
